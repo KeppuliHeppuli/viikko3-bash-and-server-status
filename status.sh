@@ -198,11 +198,81 @@ cat > "$OUTPUT" <<EOF
             </p>
         </section>
 
+
+<section class="card disk">
+    <h2>Linux Commands I Used</h2>
+
+    <p>
+        <strong>date</strong> - I used this to get the
+        current date, time and time zone.
+    </p>
+
+    <p>
+        <strong>uptime -p</strong> - This shows how long
+        the server has been running.
+    </p>
+
+    <p>
+        <strong>df -P / | awk 'NR==2 {print \$5}'</strong> -
+        I used this to get the disk usage percentage.
+        The pipe sends the output of df to awk,
+        which picks out the value I need.
+    </p>
+
+    <p>
+        <strong>free -m</strong> - This shows how much
+        RAM the server has and how much is available.
+    </p>
+</section>
+
+<section class="card disk">
+    <h2>How It Works</h2>
+
+    <p>
+        I made a Bash script called status.sh that gets
+        information about the server and puts it into
+        an HTML file.
+    </p>
+
+    <p>
+        The script also checks the disk usage with an
+        if statement. If the usage is below 80%, it
+        shows OK. If it reaches 80% or more, it
+        shows WARNING.
+    </p>
+
+    <p>
+        I used cron to run the script every minute,
+        so the report updates automatically without
+        me having to run it manually.
+    </p>
+</section>
+
+<section class="card disk">
+    <h2>Problems and What I Learned</h2>
+
+    <p>
+        One problem I had earlier was getting my Flask
+        application to connect to the database.
+        The page showed an Internal Server Error because
+        the database password was missing.
+        I fixed it by setting the correct environment
+        variables and restarting Flask.
+    </p>
+   <p>	I also had some issues with posting this into a GitHub repository,
+	 I solved it by adding a security token.
+   </p>
+    <p>
+        In this task, I also learned how to use cron
+        to update a webpage automatically every minute.
+    </p>
+</section>
+
         <footer class="footer">
             <p>Last generated: $REPORT_TIME</p>
             <p>Powered by Bash, Linux and Nginx</p>
             <p>
-                <a href="https://github.com/KeppuliHeppuli">
+                <a href="https://github.com/KeppuliHeppuli/viikko3-bash-and-server-status">
                     GitHub
                 </a>
             </p>
